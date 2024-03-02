@@ -1,0 +1,79 @@
+﻿@page "/"
+@*@using Service*@
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Newtonsoft.Json;
+@using Cass;
+@inject NavigationManager NavigationManager
+
+<h3>تسجيل الدخول</h3>
+
+<form @onsubmit="SubmitForm">
+    <div>
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" id="username" @bind="email" />
+    </div>
+    <div>
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" @bind="password" />
+    </div>
+    <button type="submit">تسجيل الدخول</button>
+</form>
+
+
+@code {
+    private string email;
+    private string password;
+
+    [Inject]
+    private NavigationManager navigationManager { get; set; }
+
+    private async Task SubmitForm()
+    {
+        string loginUrl = "http://localhost:5200/Phone/Api/Auth/Login";
+        var loginData = new { Email = email, Password = password };
+        var httpClient = new HttpClient();
+
+
+        try
+        {
+            HttpResponseMessage response = await httpClient.PostAsJsonAsync(loginUrl, loginData);
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                var Rs = await response.Content.ReadAsStringAsync();
+                var finla_data = JsonConvert.DeserializeObject<Login_Res>(Rs);
+                //Console.WriteLine(finla_data.);
+
+                if (finla_data.Data.U_Role == User_Roles.User)
+                {
+                    navigationManager.NavigateTo("/counter");
+                }
+                else
+                {
+                    navigationManager.NavigateTo("/counter2");
+                }
+
+
+
+            }
+            else
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("فشل تسجيل الدخول. الخطأ: " + errorMessage);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("حدث خطأ أثناء الاتصال بالـ API: " + ex.Message);
+        }
+        finally
+        {
+            httpClient.Dispose();
+        }
+    }
+}
+
+
+
