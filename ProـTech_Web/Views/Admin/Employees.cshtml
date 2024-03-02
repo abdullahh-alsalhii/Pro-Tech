@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يوزر الموظفين </title>
+    <link rel="stylesheet" href="/src/scss/advisesEmployees/advisesEmployees.css">
+    <link rel="stylesheet" href="~/src/scss/home/main.css" />
+    <style>
+        .accordion {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            gap: max(1vw, 1em);
+            padding: 0 max(1vw, 1em);
+            margin-top: max(1vw, 1em);
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .panel a {
+            color: #47b2e4;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <aside>
+        <div id="alert_note" class="alert_note">
+            <p>alert data</p>
+            <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+        <header>
+            <div class="container">
+
+                <div class="contint">
+                    <div class="profail">
+                        <img src="/src/img/user-round.13b5a31bebd2cc6016d6db2cac8e92d1.svg.png" alt="">
+                        <a href="/Home/Log_Out"><i class="fas fa-cog"></i></a>
+                    </div>
+                    <div class="alert">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+
+                <div class="inputsfilter">
+                    <div class="searchs">
+                        <img class="search" src="/src/img/search.svg" alt="">
+                        <input id="serach_bar" type="text" placeholder="بحث">
+                        <img id="search_button" class="svgfilter" src="/src/img/SVG.svg" alt="">
+                    </div>
+                    <div class="bare">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="bare" onclick="FormController.With_box(this, 'create_user')">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="input_controller" id="create_user">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <form method="POST" action="/users/api_create">
+                <h1>إضافة موظف</h1>
+                <div class="forms">
+                    <div class="single-form">
+                        <label>إسم الموضف</label>
+                        <input type="text" name="Full_Name" />
+                    </div>
+                    <div class="single-form">
+                        <label>بريد الموضف</label>
+                        <input type="text" name="Email" />
+                    </div>
+                    <div class="single-form">
+                        <label>الرمز السري للومضف</label>
+                        <input type="text" name="Password" />
+                    </div>
+                    <div class="single-form">
+                        <label>رقم جوال الموضف</label>
+                        <input type="text" name="Phone" />
+                    </div>
+                    <div class="single-form">
+                        <label>نوع الموضف</label>
+                        <select name="U_Role">
+                            <option value="2">أدمين</option>
+                            <option value="3" >فني</option>
+                        </select>
+                    </div>
+                </div>
+                <button>إضافة</button>
+            </form>
+        </div>
+
+        <div class="input_controller" id="delete_user">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <form method="POST" action="/users/api_delete">
+                <h1>هل انت متأكد من حذف الموظف</h1>
+                <input type="hidden"  name="Id"/>
+                <button>حذف</button>
+            </form>
+        </div>
+        <div class="input_controller" id="table_glass">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <form method="POST" action="/users/Api_Update">
+                <input type="hidden" name="Id"/>
+                <h1>تعديل الموضف</h1>
+                <div class="forms">
+                    <div class="single-form">
+                        <label>إسم الموضف</label>
+                        <input type="text" name="Full_Name" />
+                    </div>
+                    <div class="single-form">
+                        <label>بريد الموضف</label>
+                        <input type="text" name="Email" />
+                    </div>
+                    <div class="single-form">
+                        <label>الرمز السري للومضف</label>
+                        <input type="text" name="Password" />
+                    </div>
+                    <div class="single-form">
+                        <label>رقم جوال الموضف</label>
+                        <input type="text" name="Phone" />
+                    </div>
+                    <div class="single-form">
+                        <label>نوع الموضف</label>
+                        <select name="U_Role">
+                            <option value="2">أدمين</option>
+                            <option value="3">فني</option>
+                        </select>
+                    </div>
+                </div>
+                <button>تعديل</button>
+                <button onclick="FormController.With_box(this, 'delete_user')" type="button">حذف</button>
+            </form>
+        </div>
+        <div class="com">
+            <div class="container">
+                <div class="allside">
+                    <h3>يوزر الموظفين</h3>
+                    <div class="taitel">
+                        <h1>يوزر الموظفين<i class="fas fa-user-secret"></i></h1>
+                    </div>
+                    <div class="pages">
+                        <h2>الصفحات</h2>
+                        <p>يوزر الموظفين</p>
+                    </div>
+
+
+                    <div class="servicess">
+                        <h2>خدمات</h2>
+                        <ul>
+                            <li><a href="/admin/panel">لوحة المعلومات</a></li>
+                            <li><a class="activee" href="#">اضافة اقسام التطبيق </a></li>
+                            <li> <a href="/admin/reports">التقارير </a></li>
+                            <li> <a href="/admin/addApplition">انواع التقارير</a></li>
+                            <li>
+                                <a class="accordion" href="#">انشاء يوزر واعطاء صلاحيات </a>
+                                <div class="panel">
+                                    <a class="active" href="/admin/employees">يوزر الموظفين</a>
+                                    <a href="/admin/customers">يوزر العملاء</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="services">
+
+
+                    <table id="customers">
+                        <tbody></tbody>
+                       @* <tr>
+                            <th><button class="redd">تعديل</button></th>
+                            <th>emil</th>
+                            <th>رقم الجوال</th>
+                            <th>وصلاحية اليوزر</th>
+                            <th>موقع المستخدم</th>
+                            <th>اسم اليوزر </th>
+                            <th>اسم الموظف</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>dsld@gmil.com</td>
+                            <td>053032981</td>
+                            <td>hr</td>
+                            <td>منفوحه</td>
+                            <td>ieiwo3</td>
+                            <td>علي</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th><button class="redd">تعديل</button></th>
+                            <th>emil</th>
+                            <th>رقم الجوال</th>
+                            <th>وصلاحية اليوزر</th>
+                            <th>موقع المستخدم</th>
+                            <th>اسم اليوزر </th>
+                            <th>اسم الموظف</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>dsld@gmil.com</td>
+                            <td>053032981</td>
+                            <td>hr</td>
+                            <td>منفوحه</td>
+                            <td>ieiwo3</td>
+                            <td>علي</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th><button class="redd">تعديل</button></th>
+                            <th>emil</th>
+                            <th>رقم الجوال</th>
+                            <th>وصلاحية اليوزر</th>
+                            <th>موقع المستخدم</th>
+                            <th>اسم اليوزر </th>
+                            <th>اسم الموظف</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>dsld@gmil.com</td>
+                            <td>053032981</td>
+                            <td>hr</td>
+                            <td>منفوحه</td>
+                            <td>ieiwo3</td>
+                            <td>علي</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th><button class="redd">تعديل</button></th>
+                            <th>emil</th>
+                            <th>رقم الجوال</th>
+                            <th>وصلاحية اليوزر</th>
+                            <th>موقع المستخدم</th>
+                            <th>اسم اليوزر </th>
+                            <th>اسم الموظف</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>dsld@gmil.com</td>
+                            <td>053032981</td>
+                            <td>hr</td>
+                            <td>منفوحه</td>
+                            <td>ieiwo3</td>
+                            <td>علي</td>
+                            <td>1</td>
+                        </tr>*@
+
+                        <!--  -->
+
+
+
+                    </table>
+                    <button id="more_button" class="more">المزيد</button>
+                    <div id="more_loding" class="more-loding"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </aside>
+
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "flex") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "flex";
+                }
+            });
+        }
+    </script>
+    <script src="~/js/admin/main.js"></script>
+    <script src="~/js/admin/employees.js"></script>
+</body>
+
+</html>

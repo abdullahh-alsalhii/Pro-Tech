@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="src/scss/login/login.css">
+    <link rel="stylesheet" href="all.min.css">
+</head>
+
+<body>
+    <img class="login-img" src="/src/img/Login-img.png" alt="">
+
+    <div class="login">
+        <div class="container">
+            <div class="welcom">
+                <h1><i class="fas fa-warehouse"></i>Pro Tech</h1>
+                <p>مرحبًا، مرحبًا بعودتك</p>
+                <h4>أدخل بيانات الاعتماد الخاصة بك للمتابعة</h4>
+                <div class="buto">
+                    <button><img src="/src/img/search.png" alt=""> Sign in with Google</button>
+                </div>
+            </div>
+
+            <div class="input" >
+                <h1>قم بتسجيل الدخول باستخدام عنوان البريد الإلكتروني</h1>
+                <form class="main-form" method="post" action="/users/auth">
+                    <input type="text" name="Email" placeholder="Email Address / Username">
+                    <input id="pass-id" name="Password" type="password" placeholder="Password">
+                    <div class="Remmber">
+                        <div class="rememb">
+                            <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">تذكرنى</label>
+                        </div>
+                        <a class="forgit" href="#">هل نسيت كلمة السر؟</a>
+                    </div>
+                    <div class="button">
+                        <input class="submit" type="submit" value="تسجيل دخول ">
+                    </div>
+                    
+                    @*<form action="/users/auth" method="post">
+                        <input type="text" placeholder="Email" name="Email" />
+                        <input type="text" placeholder="Password" name="Password" />
+                        <input type="submit" value="Login" />
+                    </form>*@
+                    
+                    <div class="logUot">
+                        <a href="#">ليس لديك حساب؟</a>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

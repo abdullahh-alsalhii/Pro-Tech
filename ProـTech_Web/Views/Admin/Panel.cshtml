@@ -1,0 +1,253 @@
+@model ProـTech_Web.Global.SessionData
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة المعلومات</title>
+    <link rel="stylesheet" href="/src/scss/panel/panel.css">
+    <link rel="stylesheet" href="all.min.css">
+
+
+    <style>
+        .accordion {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            gap: max(1vw, 1em);
+            padding: 0 max(1vw, 1em);
+            margin-top: max(1vw, 1em);
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+            .panel a {
+                color: #47b2e4;
+            }
+    </style>
+</head>
+
+<body>
+
+
+    <aside>
+        <header>
+            <div class="container">
+
+                <div class="contint">
+                    <div class="profail">
+                        <img src="/src/img/user-round.13b5a31bebd2cc6016d6db2cac8e92d1.svg.png" alt="">
+                        <a href="/Home/Log_Out"><i class="fas fa-cog"></i></a>
+                    </div>
+                    <div class="alert">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+
+                <div class="inputsfilter">
+                    <div class="searchs">
+                        <img class="search" src="/src/img/search.svg" alt="">
+                        <input type="text" placeholder="بحث">
+                        <img class="svgfilter" src="/src/img/SVG.svg" alt="">
+                    </div>
+                    <div class="bare">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="com">
+            <div class="container">
+                <div class="allside">
+                    <h3>لوحة المعلومات </h3>
+                    <div class="taitel">
+                        <h1>لوحة المعلومات <i class="fas fa-user-secret"></i></h1>
+                    </div>
+                    <div class="pages">
+                        <h2>الصفحات</h2>
+                        <p>لوحة المعلومات </p>
+                    </div>
+
+
+                    <div class="servicess">
+                        <h2>خدمات</h2>
+                        <ul>
+                            <li><a href="/admin/panel">لوحة المعلومات</a></li>
+                            <li><a class="activee" href="#">اضافة اقسام التطبيق </a></li>
+                            <li> <a href="/admin/reports">التقارير </a></li>
+                            <li> <a href="/admin/addApplition">انواع التقارير</a></li>
+                            <li>
+                                <a class="accordion" href="#">انشاء يوزر واعطاء صلاحيات </a>
+                                <div class="panel">
+                                    <a class="active" href="/admin/employees">يوزر الموظفين</a>
+                                    <a href="/admin/customers">يوزر العملاء</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="services">
+
+                    <div class="container">
+
+                        <div class="details">
+                            <div class="cards">
+
+                                <div class="box">
+                                </div>
+                                <div class="box">
+                                </div>
+                            </div>
+
+                            <div class="data">
+                            </div>
+                        </div>
+
+                        <div class="stocks">
+                            <div class="stocksCard">
+                                <div class="stocksBox">
+                                </div>
+                                <div class="stocksBox">
+                                </div>
+                            </div>
+
+                            <div class="stocksPopular">
+                                <h1>مرحبا بك مرة اخرى <span style="color: #b15cff;">@Model.Full_Name</span></h1>
+                                <div class="cards">
+                                    <div class="card">
+                                        <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
+                                        <p class="number">450</p>
+                                        <p class="name">الطلبات الناجحه</p>
+                                    </div>
+                                    <div class="card">
+                                        <div class="icon"><i class="fa-solid fa-circle-xmark"></i></div>
+                                        <p class="number">30</p>
+                                        <p class="name">الطلبات المكنسلة</p>
+                                    </div>
+                                    <div class="card">
+                                        <div class="icon"><i class="fa-solid fa-person-digging"></i></div>
+                                        <p class="number">10</p>
+                                        <p class="name">الطلبات المفتوحة</p>
+                                    </div>
+                                    <div class="card">
+                                        <div class="icon"><i class="fa-solid fa-border-all"></i></div>
+                                        <p class="number">490</p>
+                                        <p class="name">إجمالي الطلبات</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <canvas style="height:40vh; width:80vw" id="myChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </aside>
+
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "flex") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "flex";
+                }
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const months = (config) => {
+            const MONTHS = [
+                'السبت',
+                'الأحد',
+                'الإثنين',
+                'الثلاثاء',
+                'الأربعاء',
+                'الخميس',
+                'الجمعه',
+            ];
+            var cfg = config || {};
+            var count = cfg.count || 12;
+            var section = cfg.section;
+            var values = [];
+            var i, value;
+
+            for (i = 0; i < count; ++i) {
+                value = MONTHS[Math.ceil(i) % 12];
+                values.push(value.substring(0, section));
+            }
+
+            return values;
+        }
+        var labels = months({count:7})
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'عدد الطلبات في الاسبوع',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: false,
+                tension: 0.1,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+            }],
+
+        };
+        new Chart(ctx, {
+            type: 'bar',
+            responsive:true,
+            data: data,
+        })
+    </script>
+</body>
+
+</html>

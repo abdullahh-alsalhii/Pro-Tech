@@ -1,0 +1,297 @@
+@{
+
+    var value = "https://maps.google.com/maps?q=35.856737,10.606619&z=15&output=embed";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقارير </title>
+    <link rel="stylesheet" href="/src/scss/reports/reports.css">
+    
+    <link rel="stylesheet" href="~/src/scss/home/main.css" />
+
+    <style>
+        .accordion {
+            cursor: pointer;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+
+
+        .panel {
+            display: flex;
+            flex-direction: column;
+            gap: max(1vw, 1em);
+            padding: 0 max(1vw, 1em);
+            margin-top: max(1vw, 1em);
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .panel a {
+            color: #47b2e4;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <aside>
+        <div id="alert_note" class="alert_note">
+            <p>alert data</p>
+            <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+        <header>
+            <div class="container">
+
+                <div class="contint">
+                    <div class="profail">
+                        <img src="/src/img/user-round.13b5a31bebd2cc6016d6db2cac8e92d1.svg.png" alt="">
+                        <a href="/Home/Log_Out"><i class="fas fa-cog"></i></a>
+                    </div>
+                    <div class="alert">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+
+                <div class="inputsfilter">
+                    <div class="searchs">
+                        <img class="search" src="/src/img/search.svg" alt="">
+                        <input id="serach_bar" type="text" placeholder="بحث">
+                        <img id="search_button" class="svgfilter" src="/src/img/SVG.svg" alt="">
+                    </div>
+                    <div class="bare">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="input_controller" id="table_glass">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <div class="glass">
+                <button onclick="FormController.With_box(this, 'close_report_glass')">إغلاق الطلب</button>
+                <button onclick="FormController.With_box(this, 'give_to_tec_glass')">إضافة فني</button>
+            </div>
+        </div>
+        <div class="input_controller" id="give_to_tec_glass">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <div class="glass">
+                <input type="hidden" name="Id" />
+                <h1>إضافة فني</h1>
+                <div class="forms">
+                    <div class="single-form">
+                        <label>ID الفني</label>
+                        <input type="number" name=""/>
+                    </div>
+                </div>
+                <button id="give_to_tec">إضافة</button>
+            </div>
+        </div>
+        <div class="input_controller" id="close_report_glass">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <div class="glass">
+                <input type="hidden" name="Id" />
+                <h1>هل انت متأكد من إغلاق الطلب</h1>
+                <button id="close_report_button">إغلاق</button>
+            </div>
+        </div>
+        <div class="input_controller" id="map_viewr">
+            <div class="x">
+                <p>x</p>
+            </div>
+            <div class="glass">
+                <h1>موقع العطل الفني</h1>
+                <iframe width="360" height="270" frameborder="0" style="border:0"></iframe>
+            </div>
+        </div>
+        <div class="com">
+            <div class="container">
+                <div class="allside">
+                    <h3>التقارير </h3>
+                    <div class="taitel">
+                        <h1>التقارير <i class="fas fa-user-secret"></i></h1>
+                    </div>
+                    <div class="pages">
+                        <h2>الصفحات</h2>
+                        <p>التقارير </p>
+                    </div>
+
+
+                    <div class="servicess">
+                        <h2>خدمات</h2>
+                        <ul>
+                            <li><a href="/admin/panel">لوحة المعلومات</a></li>
+                            <li><a class="activee" href="#">اضافة اقسام التطبيق </a></li>
+                            <li> <a href="/admin/reports">التقارير </a></li>
+                            <li> <a href="/admin/addApplition">انواع التقارير</a></li>
+                            <li>
+                                <a class="accordion" href="#">انشاء يوزر واعطاء صلاحيات </a>
+                                <div class="panel">
+                                    <a class="active" href="/admin/employees">يوزر الموظفين</a>
+                                    <a href="/admin/customers">يوزر العملاء</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="services">
+
+
+                    <table id="customers">
+                        <tbody>
+@*                        <tr>
+                            <th>التاريخ</th>
+                            <th>حالة الطلب</th>
+                            <th>مهمت الطلب</th>
+                            <th>مسؤل الفرع</th>
+                            <th>اسم الفرع</th>
+                            <th>المنطقة</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr data-id="10" onclick="FormController.With_box(this, 'mange_report')">
+                            <td>10/10/2040</td>
+                            <td>في الانظار</td>
+                            <td>عطل</td>
+                            <td>حسانين</td>
+                            <td>فرع ابها</td>
+                            <td>الرياض</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>حالة الطلب</th>
+                            <th>مهمت الطلب</th>
+                            <th>مسؤل الفرع</th>
+                            <th>اسم الفرع</th>
+                            <th>المنطقة</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td>10/10/2040</td>
+                            <td>في الانظار</td>
+                            <td>عطل</td>
+                            <td>حسانين</td>
+                            <td>فرع ابها</td>
+                            <td>الرياض</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>حالة الطلب</th>
+                            <th>مهمت الطلب</th>
+                            <th>مسؤل الفرع</th>
+                            <th>اسم الفرع</th>
+                            <th>المنطقة</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td>10/10/2040</td>
+                            <td>في الانظار</td>
+                            <td>عطل</td>
+                            <td>حسانين</td>
+                            <td>فرع ابها</td>
+                            <td>الرياض</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <!--  -->
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>حالة الطلب</th>
+                            <th>مهمت الطلب</th>
+                            <th>مسؤل الفرع</th>
+                            <th>اسم الفرع</th>
+                            <th>المنطقة</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td>10/10/2040</td>
+                            <td>في الانظار</td>
+                            <td>عطل</td>
+                            <td>حسانين</td>
+                            <td>فرع ابها</td>
+                            <td>الرياض</td>
+                            <td>1</td>
+                        </tr>
+
+                        <!--  -->
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>حالة الطلب</th>
+                            <th>مهمت الطلب</th>
+                            <th>مسؤل الفرع</th>
+                            <th>اسم الفرع</th>
+                            <th>المنطقة</th>
+                            <th>ID</th>
+                        </tr>
+                        <tr>
+                            <td>10/10/2040</td>
+                            <td>في الانظار</td>
+                            <td>عطل</td>
+                            <td>حسانين</td>
+                            <td>فرع ابها</td>
+                            <td>الرياض</td>
+                            <td>1</td>
+                        </tr>*@
+                        </tbody>
+                        
+                    </table>
+                    <button id="more_button" class="more">المزيد</button>
+                    <div id="more_loding" class="more-loding"></div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </aside>
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "flex") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "flex";
+                }
+            });
+        }
+    </script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/single_r_class.js"></script>
+    <script src="~/js/admin/main.js"></script>
+    <script src="~/js/admin/reports.js"></script>
+</body>
+
+</html>
