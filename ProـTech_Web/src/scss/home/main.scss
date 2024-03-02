@@ -1,0 +1,133 @@
+.input_controller{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #00000045;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    .x{
+        position: absolute;
+        right: 1%;
+        top: 2%;
+        width: max(3vw, 3rem);
+        background: #F00;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: max(2vw, 2rem);
+        height: max(3vw, 3rem);
+        color: #FFF;
+        border-radius: 50%;
+        box-shadow:#0000005a max(-0.2vw, -0.2rem) max(0.2vw, 0.2rem) max(0.1vw, 0.1rem) max(0.1vw, 0.1rem);
+        cursor: pointer;
+    }
+    form, .glass{
+        box-shadow:#0000005a max(-0.2vw, -0.2rem) max(0.2vw, 0.2rem) max(0.1vw, 0.1rem) max(0.1vw, 0.1rem);
+        background: #FFF;
+        padding: max(1vw, 1rem);
+        border-radius: max(0.5vw, 0.5rem);
+        h1{
+            text-align: center;
+            margin-bottom: max(1vw, 1rem);
+            font-size: max(2vw, 2rem);
+        }
+        button{
+            text-align: center;
+            display: block;
+            margin: auto;
+            border: none;
+            outline:none;
+            background: #2a77ae;
+            color: #FFF;
+            font-size: max(1.5vw, 1.5rem);
+            margin-top: max(2vw, 2rem);
+            padding: max(0.5vw, 0.5rem) max(1vw, 1rem);
+            cursor: pointer;
+        }
+        .forms{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: max(1vw, 1rem);
+            
+            .single-form{
+                gap: max(0.5vw, 0.5rem);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                label{
+                    font-size: max(1.2vw, 1.2rem);
+                }
+                input, select {
+                    outline: none;
+                    padding: max(0.2vw, 0.2rem) max(0.5vw, 0.5rem);
+                    font-size: max(1vw, 1rem);
+                }
+            }
+        }
+    }
+}
+.more-loding{
+    text-align: center;
+    display: none;
+    margin: auto;
+    border: none;
+    outline:none;
+    background: #2a77ae;
+    border-radius: max(0.3vw, 0.3rem);
+    width: max(3vw, 3rem);
+    height: max(3vw, 3rem);
+    margin-top: max(2vw, 2rem);
+    animation: rotate_1 0.5s infinite
+}
+.alert_note{
+    background: #F00;
+    font-size: max(1.2vw, 1.2rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: max(2vw, 2rem);
+    position: absolute;
+    top: 3%;
+    z-index: 5;
+    padding: max(0.5vw, 0.5rem) max(2vw, 2rem);
+    width: fit-content;
+    color: #FFF;
+    transition: 0.3s;
+    translate: 200% 0;
+    box-shadow:#0000005a max(-0.2vw, -0.2rem) max(0.2vw, 0.2rem) max(0.1vw, 0.1rem) max(0.1vw, 0.1rem);
+    p{
+        max-width: max(15vw, 15rem);
+    }
+    
+}
+.tanle_button{
+    text-decoration: underline;
+    color: #2a77ae;
+}
+.more{
+    text-align: center;
+    display: block;
+    margin: auto;
+    border: none;
+    outline:none;
+    background: #2a77ae;
+    color: #FFF;
+    font-size: max(1.5vw, 1.5rem);
+    margin-top: max(2vw, 2rem);
+    padding: max(0.5vw, 0.5rem) max(1vw, 1rem);
+    cursor: pointer;
+}
+
+@keyframes rotate_1{
+    from{
+        rotate: 0;
+    }
+    to{
+        rotate: 360deg;
+    }
+}

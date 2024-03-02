@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100vw;
+  scroll-behavior: smooth;
+  background: #ffffff;
+  font-family: "League Spartan", sans-serif;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+.login-img {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.login {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(144, 202, 249, 0.14);
+  background: #fff;
+  width: max(25vw, 25em);
+  text-align: center;
+  padding: max(1vw, 1em);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login .container .welcom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: max(1vw, 1em);
+  margin-bottom: 6em;
+}
+.login .container .welcom::before {
+  position: absolute;
+  content: "";
+  bottom: -20%;
+  left: 0;
+  width: 100%;
+  height: 1%;
+  background-color: #e3e8ef;
+}
+.login .container .welcom::after {
+  position: absolute;
+  content: "OR";
+  font-size: max(1.4vw, 1.4em);
+  border: 1px solid #e3e8ef;
+  border-radius: max(1vw, 1em);
+  padding: max(0.4vw, 0.4em) max(2vw, 2em);
+  bottom: -20%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: #fff;
+}
+.login .container .welcom h1 {
+  color: #000;
+  font-family: "Alexandria", sans-serif;
+  font-size: 1.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.8rem; /* 110.769% */
+  margin-bottom: max(1vw, 1em);
+}
+    .login .container .welcom p {
+        color: #3e87b8;
+        font-family: "Alexandria", sans-serif;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.8rem; /* 120% */
+    }
+.login .container .welcom h4 {
+  color: #697586;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.66rem; /* 166% */
+}
+.login .container .welcom .buto {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.login .container .welcom .buto button {
+  display: flex;
+  padding: max(1vw, 1em);
+  justify-content: center;
+  align-items: center;
+  font-size: max(1vw, 1em);
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+.login .container .welcom .buto button img {
+  width: max(1vw, 1em);
+  margin-right: max(1vw, 1em);
+}
+.login .container .input h1 {
+  color: #121926;
+  font-family: "Alexandria", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.53125rem; /* 175% */
+  margin-bottom: max(1vw, 1em);
+}
+.login .container .input form {
+  display: flex;
+  flex-direction: column;
+  width: -moz-fit-content;
+  width: fit-content;
+  justify-content: center;
+  margin: 0 auto;
+  gap: max(1vw, 1em);
+  width: 100%;
+}
+.login .container .input form input {
+  padding: max(1vw, 1em);
+  border-radius: max(0.4vw, 0.4em);
+  border: 1px solid #697586;
+}
+.login .container .input form .Remmber {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.login .container .input form .Remmber .rememb {
+  display: flex;
+  justify-content: center;
+  gap: max(0.3vw, 0.3em);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.login .container .input form .Remmber .rememb label {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-family: "Alexandria", sans-serif;
+  font-weight: 200;
+}
+.login .container .input form .Remmber .forgit {
+  color: #47b2e4;
+  font-family: "Alexandria", sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.53125rem; /* 175% */
+}
+.login .container .input form .button .submit {
+  padding: max(1vw, 1em);
+  width: 100%;
+  color: white;
+  font-size: max(1vw, 1em);
+  justify-content: center;
+  border: none;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: #3e87b8;
+  cursor: pointer;
+}/*# sourceMappingURL=login.css.map */

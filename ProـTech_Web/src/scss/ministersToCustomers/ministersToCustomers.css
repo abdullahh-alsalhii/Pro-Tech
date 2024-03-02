@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  direction: rtl;
+  list-style: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Alexandria", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  list-style: none;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(174, 174, 174);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+aside {
+  overflow: hidden;
+  height: 100vh;
+}
+aside header {
+  padding: max(1vw, 1em);
+}
+aside header .container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+aside header .contint {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: max(1vw, 1em);
+}
+aside header .contint .profail {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-color: #eef2f6;
+  padding: max(0.5vw, 0.5em) max(1vw, 1em);
+  border-radius: max(5vw, 5em);
+  gap: max(1vw, 1em);
+}
+aside header .contint .profail img {
+  max-width: max(2vw, 2em);
+  min-width: max(2vw, 2em);
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+aside header .contint .profail i {
+  font-size: max(1vw, 1em);
+  color: #47b2e4;
+}
+aside header .contint .alert {
+  background-color: #eef2f6;
+  padding: max(0.8vw, 0.8em) max(1vw, 1em);
+  border-radius: max(5vw, 5em);
+}
+aside header .contint .alert i {
+  color: #47b2e4;
+  font-size: max(1vw, 1em);
+}
+aside header .inputsfilter {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: max(1vw, 1em);
+}
+aside header .inputsfilter .searchs {
+  position: relative;
+}
+aside header .inputsfilter .searchs .search {
+  position: absolute;
+  transform: translate(-60%, -50%);
+  top: 50%;
+}
+aside header .inputsfilter .searchs input {
+  padding: max(0.4vw, 0.4em) max(2vw, 2em) max(0.4vw, 0.4em) max(0.4vw, 0.4em);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  width: 27rem;
+  height: 3rem;
+}
+aside header .inputsfilter .searchs input::-moz-placeholder {
+  font-size: max(0.7vw, 0.7em);
+  color: #697586;
+}
+aside header .inputsfilter .searchs input::placeholder {
+  font-size: max(0.7vw, 0.7em);
+  color: #697586;
+}
+aside header .inputsfilter .searchs .svgfilter {
+  position: absolute;
+  transform: translate(110%, -50%);
+  cursor: pointer;
+  top: 50%;
+  border-radius: 0.5rem;
+  background: #ede7f6;
+  color: #47b2e4;
+  padding: max(0.5vw, 0.5em);
+}
+aside header .inputsfilter .bare {
+  background-color: #eef2f6;
+  padding: max(0.6vw, 0.6em) max(0.9vw, 0.9em);
+  border-radius: max(0.3vw, 0.3em) max(0.6vw, 0.6em);
+  cursor: pointer;
+}
+aside header .inputsfilter .bare i {
+  color: #47b2e4;
+  font-size: max(1vw, 1em);
+}
+aside .com .container {
+  display: flex;
+}
+aside .com .container .allside {
+  width: max(20vw, 20em);
+  height: 100vh;
+  padding: max(1vw, 1em);
+}
+aside .com .container .allside h3 {
+  font-size: max(1vw, 1em);
+  margin-bottom: max(1vw, 1em);
+}
+aside .com .container .allside .taitel {
+  border-bottom: 1px solid #e3e8ef;
+  padding-bottom: max(1vw, 1em);
+}
+aside .com .container .allside .taitel h1 {
+  background-color: #ede7f6;
+  border-radius: max(0.6vw, 0.6em);
+  padding: max(1vw, 1em);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: max(1vw, 1em);
+  font-weight: 400;
+  font-size: max(1vw, 1em);
+  color: #47b2e4;
+}
+aside .com .container .allside .taitel h1 i {
+  color: #47b2e4;
+  font-size: max(1vw, 1em);
+}
+aside .com .container .allside .pages {
+  display: flex;
+  flex-direction: column;
+  gap: max(1vw, 1em);
+  margin: max(1vw, 1em) 0;
+  border-bottom: 1px solid #e3e8ef;
+  padding-bottom: max(1vw, 1em);
+}
+aside .com .container .allside .pages h2 {
+  color: #121926;
+  font-size: max(1vw, 1em);
+}
+aside .com .container .allside .pages p {
+  color: #697586;
+  font-size: max(0.8vw, 0.8em);
+}
+aside .com .container .allside .servicess {
+  display: flex;
+  flex-direction: column;
+  gap: max(0.6vw, 0.6em);
+  margin: max(1vw, 1em) 0;
+  border-bottom: 1px solid #e3e8ef;
+  padding-bottom: max(1vw, 1em);
+}
+aside .com .container .allside h2 {
+  color: #121926;
+  font-size: max(1vw, 1em);
+}
+aside .com .container .allside ul {
+  display: flex;
+  flex-direction: column;
+  gap: max(1vw, 1em);
+}
+aside .com .container .allside ul li a {
+  color: #697586;
+  font-size: max(0.8vw, 0.8em);
+}
+aside .com .container .allside ul li .activee {
+  color: #121926;
+  cursor: auto;
+}
+aside .com .container .services {
+  background-color: #eef2f6;
+  width: 95rem;
+  border-radius: max(1vw, 1em);
+  max-height: 89vh;
+  padding: max(1vw, 1em);
+  width: max(79vw, 79em);
+  overflow: auto;
+}
+aside .com .container .services #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+aside .com .container .services .add {
+  background-color: #b9f6ca;
+  padding: max(0.7vw, 0.7em) max(1.3vw, 1.3em);
+  border-radius: max(0.2vw, 0.2em);
+  border: none;
+  cursor: pointer;
+  margin-bottom: max(2vw, 2em);
+}
+aside .com .container .services #customers td,
+aside .com .container .services #customers th {
+  padding: max(1vw, 1em);
+  text-align: end;
+  color: #8f8f8f;
+}
+aside .com .container .services #customers tr:nth-child(even) {
+  border-bottom: 1px solid #ddd;
+  background-color: #f2f2f2;
+}
+aside .com .container .services #customers tr:hover {
+  background-color: #ddd;
+}
+aside .com .container .services #customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #eef2f6;
+  font-size: max(0.8vw, 0.8em);
+  color: rgb(0, 0, 0);
+}
+aside .com .container .services #customers th .redd {
+  background-color: #f6b9b9;
+  padding: max(0.7vw, 0.7em) max(1.3vw, 1.3em);
+  border-radius: max(0.2vw, 0.2em);
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=ministersToCustomers.css.map */
