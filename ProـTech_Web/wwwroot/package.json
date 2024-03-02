@@ -1,0 +1,10 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@microsoft/signalr": "^7.0.11",
+    "@types/jquery": "^3.5.20"
+  }
+}
